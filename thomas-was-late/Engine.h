@@ -16,6 +16,7 @@ private:
 
 	sf::RenderWindow m_Window;
 
+	// Background views
 	sf::View m_BGMainView;
 	sf::View m_BGLeftView;
 	sf::View m_BGRightView;
