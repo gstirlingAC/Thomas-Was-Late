@@ -2,6 +2,7 @@
 #define ENGINE_H
 #include <SFML/Graphics.hpp>
 #include "TextureHolder.h"
+#include "LevelManager.h"
 #include "Thomas.h"
 #include "Bob.h"
 
@@ -13,6 +14,9 @@ private:
 
 	Thomas m_Thomas;
 	Bob m_Bob;
+
+	// A class reference to manage all the levels
+	LevelManager m_LM;
 
 	const int TILE_SIZE = 50;
 	const int VERT_IN_QUAD = 4;
@@ -47,9 +51,19 @@ private:
 	float m_TimeRemaining = 10;
 	sf::Time m_GameTimeTotal;
 
+	// The vertex array for the level tiles
+	VertexArray m_VALevel;
+
+	// The 2d array with the map for the level
+	int** m_ArrayLevel = NULL;
+
+	// Texture for the level tiles
+	Texture m_TextureFiles;
+
 	void input();
 	void update(float dtAsSeconds);
 	void draw();
+	void loadLevel();
 
 public:
 	Engine();

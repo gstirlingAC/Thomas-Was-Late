@@ -35,6 +35,9 @@ Engine::Engine()
 	);
 
 	m_BackgroundSprite.setTexture(m_BackgroundTexture);
+	
+	// Load the texture for the background vertex array
+	m_TextureFiles = TextureHolder::GetTexture("assets/graphics/tiles_sheet.png");
 }
 
 void Engine::run()
