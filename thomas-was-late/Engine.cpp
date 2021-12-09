@@ -10,6 +10,7 @@ Engine::Engine()
 		"Thomas Was Late", sf::Style::Fullscreen);
 
 	m_MainView.setSize(resolution);
+
 	m_HUDView.reset(
 		sf::FloatRect(0, 0, resolution.x, resolution.y)
 	);

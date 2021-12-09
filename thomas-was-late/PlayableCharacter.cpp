@@ -1,5 +1,9 @@
 #include "PlayableCharacter.h"
 
+#include <iostream>
+
+using namespace std;
+
 void PlayableCharacter::spawn(Vector2f startPosition, float gravity)
 {
 	m_Position.x = startPosition.x;
@@ -43,6 +47,8 @@ Sprite PlayableCharacter::getSprite()
 void PlayableCharacter::stopFalling(float position)
 {
 	m_Position.y = position - getPosition().height;
+	m_Sprite.setPosition(m_Position);
+	m_IsFalling = false;
 }
 
 void PlayableCharacter::stopRight(float position)
@@ -126,5 +132,4 @@ void PlayableCharacter::update(float elapsedTime)
 	m_Left.height = r.height * 0.3;
 
 	m_Sprite.setPosition(m_Position);
-
 }
