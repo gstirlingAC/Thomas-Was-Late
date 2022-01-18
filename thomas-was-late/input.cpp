@@ -22,10 +22,12 @@ void Engine::input()
 	if (m_Thomas.handleInput())
 	{
 		// Play a jump sound
+		m_SM.PlayJump();
 	}
 	
 	if (m_Bob.handleInput())
 	{
 		// Play a jump sound
+		m_SM.PlayJump();
 	}
 }

@@ -3,9 +3,11 @@
 #include <SFML/Graphics.hpp>
 #include "TextureHolder.h"
 #include "LevelManager.h"
-//#include "PlayableCharacter.h"
+#include "SoundManager.h"
 #include "Thomas.h"
 #include "Bob.h"
+
+using namespace sf;
 
 class Engine 
 {
@@ -19,27 +21,30 @@ private:
 	// A class reference to manage all the levels
 	LevelManager m_LM;
 
+	// A class reference to manage sound
+	SoundManager m_SM;
+
 	const int TILE_SIZE = 50;
 	const int VERT_IN_QUAD = 4;
 
 	// The force pushing the characters down
 	const int GRAVITY = 300;
 
-	sf::RenderWindow m_Window;
+	RenderWindow m_Window;
 
 	//The main views
-	sf::View m_MainView;
-	sf::View m_LeftView;
-	sf::View m_RightView;
+	View m_MainView;
+	View m_LeftView;
+	View m_RightView;
 
 	// Background views
-	sf::View m_BGMainView;
-	sf::View m_BGLeftView;
-	sf::View m_BGRightView;
-	sf::View m_HUDView;
+	View m_BGMainView;
+	View m_BGLeftView;
+	View m_BGRightView;
+	View m_HUDView;
 
-	sf::Sprite m_BackgroundSprite;
-	sf::Texture m_BackgroundTexture;
+	Sprite m_BackgroundSprite;
+	Texture m_BackgroundTexture;
 
 	bool m_IsPlaying = false;
 
@@ -61,11 +66,16 @@ private:
 	// Texture for the level tiles
 	Texture m_TextureFiles;
 
+	vector <Vector2f> m_FireEmitters;
+
 	void input();
 	void update(float dtAsSeconds);
 	void draw();
 	void loadLevel();
+	void populateEmitters(vector<Vector2f>& vSoundEmitters, int** arrayLevel);
 	bool detectCollisions(PlayableCharacter& character);
+
+
 
 public:
 	Engine();
